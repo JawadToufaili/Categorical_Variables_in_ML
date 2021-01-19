@@ -1,0 +1,2 @@
+#Used when categorical variable is not ordinal
+pd.get_dummies(X_categorical, drop_first=True)
