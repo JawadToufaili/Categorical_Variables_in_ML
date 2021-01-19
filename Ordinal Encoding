@@ -1,0 +1,21 @@
+#Used to convert categorical columns that have order to a single column of numbers
+import category_encoders as ce
+size_df = pd.DataFrame(
+{
+"name": ["Fred", "John", "Matt"],
+"size": ["small", "med", "xxl"],
+}
+)
+ore = ce.OrdinalEncoder(
+mapping=[
+{
+"col": "size",
+"mapping": {
+"small": 1,
+"med": 2,
+"lg": 3,
+},
+}
+]
+)
+ore.fit_transform(size_df)
