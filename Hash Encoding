@@ -1,0 +1,5 @@
+#transofrmation of a string of characters into shorter fixed-length value representing the original string
+# it is useful when we dont know how many catgeories we are using ahead of time, or if we are using a bad of words to represent texts
+import category_encoders as ce
+he = ce.HashingEncoder(verbose=1)
+he.fit_transform(X_cat)
