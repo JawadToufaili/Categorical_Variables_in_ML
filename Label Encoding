@@ -1,0 +1,6 @@
+#Label Encoding
+#used when categorical variable is ordinal or has high cardinality nominal data
+from sklearn import preprocessing
+label_encoder = preprocessing.LabelEncoder()
+df['column']= label_encoder.fit_transform(df['column']) 
+print(df.head())
