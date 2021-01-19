@@ -1,0 +1,15 @@
+#Maps categorical variables into euclidean spaces, whcih represent the entity embeddings of the categorical variables. 
+# this mapping is learned by neural network during training process
+embedding_size = 20
+model = keras.models.Sequential([
+text_vectorization,
+keras.layers.Embedding(input_dim=n_tokens,
+output_dim=embedding_size,
+mask_zero=True),
+keras.layers.Lambda(compute_mean_embedding),
+keras.layers.Dense(100, activation="relu"),
+keras.layers.Dense(1, activation="sigmoid"),
+])
+model.compile(loss="binary_crossentropy", optimizer="nadam", metrics=["accuracy"])
+model.fit(train_set, epochs=5, validation_data=valid_set)
+
