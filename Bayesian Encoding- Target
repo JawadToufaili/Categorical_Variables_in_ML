@@ -1,0 +1,17 @@
+# Target: used for both categorical and continuous variables 
+#In the case of categorical, the features are replaced with a blend of posterior probability 
+#given a particulars categroical value, and the prior probability of the target over all treianing data
+#For continuous, features are replaced with a blend of expected value of the target given 
+#a particulars categroical value, and the expected value of the target over all treianing data
+
+from category_encoders import *
+import pandas as pd
+from sklearn.datasets import load_boston
+bunch = load_boston()
+y_train = bunch.target[0:250]
+y_test = bunch.target[250:506]
+X_train = pd.DataFrame(bunch.data[0:250], columns=bunch.feature_names)
+X_test = pd.DataFrame(bunch.data[250:506], columns=bunch.feature_names)
+enc = TargetEncoder(cols=['CHAS', 'RAD'])
+training_numeric_dataset = enc.fit_transform(X_train, y_train)
+testing_numeric_dataset = enc.transform(X_test)
