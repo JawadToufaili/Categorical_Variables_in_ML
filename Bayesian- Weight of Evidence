@@ -1,0 +1,14 @@
+#Gives the predictive power of a feature relative to the target variable.
+#It helps transform a continuous independent variable into a bins based on similarity of the distributions
+#Target variable should be binary
+from category_encoders import *
+import pandas as pd
+from sklearn.datasets import load_boston
+bunch = load_boston()
+y_train = bunch.target[0:250]
+y_test = bunch.target[250:506]
+X_train = pd.DataFrame(bunch.data[0:250], columns=bunch.feature_names)
+X_test = pd.DataFrame(bunch.data[250:506], columns=bunch.feature_names)
+enc = WOEEncoder(cols=['CHAS', 'RAD'])
+training_numeric_dataset = enc.fit_transform(X_train, y_train)
+testing_numeric_dataset = enc.transform(X_test)
